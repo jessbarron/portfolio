@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jess Barron — Content Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0e0e;
+    --white: #f8f6f1;
+    --green: #10A37F;
+    --green-light: #e6f7f2;
+    --mid: #444;
+    --light: #888;
+    --rule: #d8d4cc;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 60px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16,163,127,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 680px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.2s;
+  }
+
+  h1 em { font-style: italic; color: var(--green); }
+
+  .header-sub {
+    margin-top: 24px;
+    font-size: 1rem;
+    color: rgba(248,246,241,0.6);
+    max-width: 560px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.35s;
+  }
+
+  /* MAIN */
+  main { max-width: 880px; margin: 0 auto; padding: 80px 40px 120px; }
+
+  /* NAV */
+  .portfolio-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .portfolio-nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .portfolio-nav a:hover, .portfolio-nav a.active {
+    color: var(--green);
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+
+  /* SECTION */
+  .category {
+    margin-bottom: 64px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .category.visible { opacity: 1; transform: translateY(0); }
+
+  .category-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .category-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* CARD */
+  .card {
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .card:hover { border-color: var(--green); }
+
+  .card-inner {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+  }
+
+  .card-brand {
+    background: #f2efe8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .card-brand span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .card-content { padding: 24px 28px; }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .card-title a {
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .card-title a:hover { color: var(--green); }
+
+  .card-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .card-metrics {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .metric-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: 0.7rem;
+    color: var(--light);
+    line-height: 1.3;
+  }
+
+  /* SYSTEM LINK */
+  .system-callout {
+    border: 2px solid var(--green);
+    border-radius: 2px;
+    padding: 32px;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    background: var(--green-light);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .system-callout.visible { opacity: 1; transform: translateY(0); }
+
+  .system-callout h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .system-callout p {
+    font-size: 0.9rem;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .system-callout a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--green);
+    border-radius: 2px;
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+
+  .system-callout a:hover {
+    background: var(--green);
+    color: white;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: rgba(248,246,241,0.5);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.85rem;
+  }
+
+  footer a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 48px 24px 40px; }
+    main { padding: 48px 20px 80px; }
+    footer { padding: 32px 24px; }
+    .card-inner { grid-template-columns: 1fr; }
+    .card-brand { border-right: none; border-bottom: 1px solid var(--rule); padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Content Portfolio</div>
+  <h1>Jess Barron</h1>
+  <p class="header-sub">15+ years building content engines and editorial operations at the intersection of health, wellness, and technology. This portfolio features selected work across data journalism, clinical content, consumer health, video production, and enterprise storytelling.</p>
+</header>
+
+<main>
+
+  <nav class="portfolio-nav">
+    <a href="#data" class="active">Data Journalism</a>
+    <a href="#clinical">Clinical Content</a>
+    <a href="#consumer">Consumer Health</a>
+    <a href="#video">Video &amp; Multimedia</a>
+    <a href="#system">Content System</a>
+  </nav>
+
+  <!-- DATA JOURNALISM -->
+  <div class="category" id="data">
+    <div class="category-label">Data Journalism &amp; Lead Generation</div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Simple<br>Practice</span></div>
+        <div class="card-content">
+          <div class="card-role">Bylined Author &amp; Content Strategist</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">The Average Cost of Therapy in America by State</a></div>
+          <div class="card-desc">Bylined article built on a comprehensive analysis of nearly 105 million therapy sessions using proprietary SimplePractice data. Part of a two-article email collection strategy with a companion gated 24-page white paper. Unprecedented dataset from nearly 204,000 behavioral health therapists across all 50 states.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">105M</div><div class="metric-label">Sessions analyzed</div></div>
+            <div class="metric"><div class="metric-value">204K</div><div class="metric-label">Therapists in dataset</div></div>
+            <div class="metric"><div class="metric-value">Gated</div><div class="metric-label">24-page white paper</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Sleep<br>.com</span></div>
+        <div class="card-content">
+          <div class="card-role">Author &amp; Head of Content</div>
+          <div class="card-title"><a href="https://www.sleep.com/sleep-health/most-sleep-deprived-cities" target="_blank">America's Most Sleep-Deprived Cities</a></div>
+          <div class="card-desc">Researched and wrote this data-driven article using proprietary data from partner SleepScore Labs. Became the most-viewed article on Sleep.com in 2021, demonstrating how original data partnerships can drive outsized audience engagement.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">250K+</div><div class="metric-label">Views in first 8 months</div></div>
+            <div class="metric"><div class="metric-value">#1</div><div class="metric-label">Most-viewed article on Sleep.com, 2021</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLINICAL CONTENT -->
+  <div class="category" id="clinical">
+    <div class="category-label">Clinical &amp; Practitioner Content</div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Simple<br>Practice</span></div>
+        <div class="card-content">
+          <div class="card-role">Content Strategist &amp; Editor</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/election-anxiety/" target="_blank">Therapists and Clients Experiencing Political Anxiety</a></div>
+          <div class="card-desc">Published days before the 2024 election, this expert-sourced piece met both practitioners and their clients exactly where they were. A real-time example of content that earns trust by showing up at the right moment with clinical credibility.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Simple<br>Practice</span></div>
+        <div class="card-content">
+          <div class="card-role">Content Strategist &amp; Editor</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/how-talk-about-suicide/" target="_blank">How to Talk About Suicide</a></div>
+          <div class="card-desc">A demonstration of how to handle the most clinically sensitive content without sacrificing clarity or brand voice. Required careful editorial judgment, expert sourcing, and deep understanding of the practitioner audience.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSUMER HEALTH -->
+  <div class="category" id="consumer">
+    <div class="category-label">Consumer Health &amp; Equity</div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Therapy<br>Finder</span></div>
+        <div class="card-content">
+          <div class="card-role">Co-author &amp; Editor</div>
+          <div class="card-title"><a href="https://therapyfinder.com/health-resources/articles/therapy-101/why-is-it-so-hard-to-find-a-black-therapist" target="_blank">Why Is It So Hard to Find a Black Therapist?</a></div>
+          <div class="card-desc">Commissioned, shaped, and edited this deeply reported piece on mental health access disparities for Black Americans, co-written with journalist Caron LeNoir. Drove consumers to search the directory, browse available therapists, and book appointments. Measurably improved directory usage and appointment bookings.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Sleep<br>.com</span></div>
+        <div class="card-content">
+          <div class="card-role">Author &amp; Head of Content</div>
+          <div class="card-title"><a href="https://www.sleep.com/sleep-health/summer-sleep-study" target="_blank">The Surprising Effect Summer's Long Days Have on Americans' Sleep</a></div>
+          <div class="card-desc">Researched and wrote this article with SleepScore Labs data and input from applied sleep scientist Elie Gottlieb, Ph.D. Demonstrates ability to translate complex scientific data into accessible consumer health narratives.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="category" id="video">
+    <div class="category-label">Video &amp; Multimedia</div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Sleep<br>.com</span></div>
+        <div class="card-content">
+          <div class="card-role">Creator &amp; Executive Producer</div>
+          <div class="card-title">"8 Days to 8 Hours" Behavior Change Video Course</div>
+          <div class="card-desc">Conceived, developed, and produced an original 8-day behavior change video course hosted by neurologist and sleep specialist Chris Winter, MD. Built to help audiences build better sleep habits through one small, science-backed step per day. Collected emails and built Sleep.com's email list to over 100,000 recipients.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">100K+</div><div class="metric-label">Email subscribers generated</div></div>
+            <div class="metric"><div class="metric-value">8 days</div><div class="metric-label">Behavior change course</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-brand"><span>Live<br>Strong</span></div>
+        <div class="card-content">
+          <div class="card-role">Author, Host &amp; Producer</div>
+          <div class="card-title"><a href="https://www.youtube.com/watch?v=Ck-qTntBXCU" target="_blank">Fishing for Answers: Wild-Caught or Farm-Raised Fish?</a></div>
+          <div class="card-desc">Traveled to Mexico to research, report, and write the long-form article. Voiced and wrote the script for LIVESTRONG's first-ever 9-minute short documentary video, created to bring light to environmental issues facing the ocean.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">24K</div><div class="metric-label">Documentary views</div></div>
+            <div class="metric"><div class="metric-value">97K</div><div class="metric-label">Facebook short-form views</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYSTEM CALLOUT -->
+  <div class="system-callout" id="system">
+    <h3>The Content Machine I Built at SimplePractice</h3>
+    <p>Beyond individual pieces, I designed the AI-augmented editorial system that produced 1,200+ pieces annually and drove 4,374 paid customer accounts. This case study walks through the pipeline architecture, AI workflows, contributor network, and measurement framework I built from scratch.</p>
+    <a href="https://jessbarron.github.io/content-system/" target="_blank">View the full case study</a>
+  </div>
+
+</main>
+
+<footer>
+  <span>Jess Barron &middot; jessbeegood@gmail.com &middot; 310-913-5387</span>
+  <span>
+    <a href="https://linkedin.com/in/jessbarron">LinkedIn</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://jessbarron.github.io/content-system/">Content System Case Study</a>
+  </span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.category, .system-callout').forEach(s => observer.observe(s));
+
+  // Simple nav highlighting
+  document.querySelectorAll('.portfolio-nav a').forEach(link => {
+    link.addEventListener('click', function() {
+      document.querySelectorAll('.portfolio-nav a').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
