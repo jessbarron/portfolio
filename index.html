@@ -153,27 +153,63 @@
 
   .card-inner {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .card-brand {
-    background: #f2efe8;
+  .card-thumb {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-thumb img { transform: scale(1.03); }
+
+  .card-thumb-gradient {
+    width: 100%;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
-    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
   }
 
-  .card-brand span {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--light);
-    text-align: center;
-    line-height: 1.5;
+  .card-thumb-gradient .brand-mark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: rgba(255,255,255,0.9);
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.02em;
   }
+
+  .card-thumb-gradient .brand-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    position: absolute;
+    bottom: 16px;
+    left: 20px;
+    z-index: 1;
+  }
+
+  .grad-sp { background: linear-gradient(135deg, #1a6b54 0%, #0e3d30 100%); }
+  .grad-sleep { background: linear-gradient(135deg, #2b4a7c 0%, #1a2d4d 100%); }
+  .grad-tf { background: linear-gradient(135deg, #6b4a8a 0%, #3d2a54 100%); }
+  .grad-ls { background: linear-gradient(135deg, #c4a833 0%, #7a6a1f 100%); }
 
   .card-content { padding: 24px 28px; }
 
@@ -314,8 +350,7 @@
     header { padding: 48px 24px 40px; }
     main { padding: 48px 20px 80px; }
     footer { padding: 32px 24px; }
-    .card-inner { grid-template-columns: 1fr; }
-    .card-brand { border-right: none; border-bottom: 1px solid var(--rule); padding: 16px; }
+    .card-thumb, .card-thumb-gradient { height: 140px; }
   }
 </style>
 </head>
@@ -343,7 +378,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Simple<br>Practice</span></div>
+        <div class="card-thumb-gradient grad-sp">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Data Journalism &bull; 105M Sessions Analyzed</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Bylined Author &amp; Content Strategist</div>
           <div class="card-title"><a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">The Average Cost of Therapy in America by State</a></div>
@@ -359,7 +397,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Sleep<br>.com</span></div>
+        <div class="card-thumb-gradient grad-sleep">
+          <div class="brand-mark">Sleep.com</div>
+          <div class="brand-sub">Data Partnership &bull; SleepScore Labs</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Author &amp; Head of Content</div>
           <div class="card-title"><a href="https://www.sleep.com/sleep-health/most-sleep-deprived-cities" target="_blank">America's Most Sleep-Deprived Cities</a></div>
@@ -379,7 +420,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Simple<br>Practice</span></div>
+        <div class="card-thumb-gradient grad-sp">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Clinical Content &bull; Published Pre-Election 2024</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Content Strategist &amp; Editor</div>
           <div class="card-title"><a href="https://www.simplepractice.com/blog/election-anxiety/" target="_blank">Therapists and Clients Experiencing Political Anxiety</a></div>
@@ -390,7 +434,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Simple<br>Practice</span></div>
+        <div class="card-thumb-gradient grad-sp">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Sensitive Clinical Content &bull; Editorial Judgment</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Content Strategist &amp; Editor</div>
           <div class="card-title"><a href="https://www.simplepractice.com/blog/how-talk-about-suicide/" target="_blank">How to Talk About Suicide</a></div>
@@ -406,7 +453,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Therapy<br>Finder</span></div>
+        <div class="card-thumb-gradient grad-tf">
+          <div class="brand-mark">TherapyFinder</div>
+          <div class="brand-sub">Health Equity &bull; Long-form Reporting</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Co-author &amp; Editor</div>
           <div class="card-title"><a href="https://therapyfinder.com/health-resources/articles/therapy-101/why-is-it-so-hard-to-find-a-black-therapist" target="_blank">Why Is It So Hard to Find a Black Therapist?</a></div>
@@ -417,7 +467,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Sleep<br>.com</span></div>
+        <div class="card-thumb-gradient grad-sleep">
+          <div class="brand-mark">Sleep.com</div>
+          <div class="brand-sub">Science Translation &bull; SleepScore Labs</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Author &amp; Head of Content</div>
           <div class="card-title"><a href="https://www.sleep.com/sleep-health/summer-sleep-study" target="_blank">The Surprising Effect Summer's Long Days Have on Americans' Sleep</a></div>
@@ -433,7 +486,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Sleep<br>.com</span></div>
+        <div class="card-thumb-gradient grad-sleep">
+          <div class="brand-mark">Sleep.com</div>
+          <div class="brand-sub">Behavior Change &bull; 8-Day Video Course</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Creator &amp; Executive Producer</div>
           <div class="card-title">"8 Days to 8 Hours" Behavior Change Video Course</div>
@@ -448,7 +504,10 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-brand"><span>Live<br>Strong</span></div>
+        <div class="card-thumb-gradient grad-ls">
+          <div class="brand-mark">LIVESTRONG</div>
+          <div class="brand-sub">Short Documentary &bull; First-Ever Video Production</div>
+        </div>
         <div class="card-content">
           <div class="card-role">Author, Host &amp; Producer</div>
           <div class="card-title"><a href="https://www.youtube.com/watch?v=Ck-qTntBXCU" target="_blank">Fishing for Answers: Wild-Caught or Farm-Raised Fish?</a></div>
