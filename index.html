@@ -3,93 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jess Barron — Content Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Jess Barron · Content Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0e0e0e;
-    --white: #f8f6f1;
-    --green: #10A37F;
-    --green-light: #e6f7f2;
-    --mid: #444;
-    --light: #888;
-    --rule: #d8d4cc;
+    --black: #1a1512;
+    --ink: #241d18;
+    --white: #faf6f0;
+    --paper: #fdfaf5;
+    --coral: #e0512f;
+    --coral-deep: #c23d1e;
+    --coral-light: #fbe8e0;
+    --mid: #443b34;
+    --light: #96897d;
+    --rule: #e8ddd0;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { font-size: 16px; scroll-behavior: smooth; }
 
   body {
-    background: var(--white);
-    color: var(--black);
+    background: var(--paper);
+    color: var(--ink);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
 
+  ::selection { background: var(--coral); color: white; }
+
+  .progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 4px; background: var(--coral);
+    width: 0%; z-index: 100;
+    transition: width 0.1s ease;
+  }
+
   /* HEADER */
   header {
     background: var(--black);
     color: var(--white);
-    padding: 80px 60px 64px;
+    padding: 110px 60px 84px;
     position: relative;
     overflow: hidden;
+    border-bottom: 8px solid var(--coral);
   }
 
   header::before {
     content: '';
     position: absolute;
-    top: -60px; right: -60px;
-    width: 320px; height: 320px;
+    top: -120px; right: -120px;
+    width: 520px; height: 520px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(16,163,127,0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(224,81,47,0.32) 0%, transparent 68%);
     pointer-events: none;
   }
 
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -220px; left: -100px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224,81,47,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
   .eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 24px;
+    color: var(--coral);
+    margin-bottom: 30px;
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.1s;
+    display: flex; align-items: center; gap: 12px;
   }
+  .eyebrow::before { content: ''; width: 36px; height: 2px; background: var(--coral); }
 
   h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(3.2rem, 7vw, 5.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
     color: var(--white);
-    max-width: 680px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.2s;
   }
 
-  h1 em { font-style: italic; color: var(--green); }
+  h1 em { font-style: italic; color: var(--coral); }
 
   .header-sub {
-    margin-top: 24px;
-    font-size: 1rem;
-    color: rgba(248,246,241,0.6);
-    max-width: 560px;
-    line-height: 1.7;
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: rgba(250,246,240,0.72);
+    max-width: 640px;
+    line-height: 1.6;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.35s;
   }
 
   /* MAIN */
-  main { max-width: 880px; margin: 0 auto; padding: 80px 40px 120px; }
+  main { max-width: 900px; margin: 0 auto; padding: 80px 40px 120px; }
 
-  /* NAV */
   .portfolio-nav {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 72px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.5s;
   }
@@ -101,97 +124,82 @@
     text-transform: uppercase;
     color: var(--light);
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 9px 16px;
     border: 1px solid var(--rule);
-    border-radius: 2px;
+    border-radius: 3px;
     transition: all 0.2s ease;
   }
 
   .portfolio-nav a:hover, .portfolio-nav a.active {
-    color: var(--green);
-    border-color: var(--green);
-    background: var(--green-light);
+    color: var(--coral-deep);
+    border-color: var(--coral);
+    background: var(--coral-light);
   }
 
-  /* SECTION */
   .category {
-    margin-bottom: 64px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    margin-bottom: 84px;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .category.visible { opacity: 1; transform: translateY(0); }
 
+  /* SECTION NAMES — now large serif headings */
   .category-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 34px;
+    display: flex; align-items: center; gap: 18px;
+    line-height: 1.1;
   }
-  .category-label::after {
+  .category-label::before {
     content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
+    width: 16px; height: 16px;
+    background: var(--coral);
+    flex-shrink: 0;
+    border-radius: 2px;
   }
+  .category-label::after { content: ''; flex: 1; height: 2px; background: var(--ink); opacity: 0.14; }
 
   /* CARD */
   .card {
     border: 1px solid var(--rule);
-    border-radius: 2px;
-    margin-bottom: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
     overflow: hidden;
-    transition: border-color 0.2s ease;
+    background: var(--paper);
+    transition: border-color 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
 
-  .card:hover { border-color: var(--green); }
-
-  .card-inner {
-    display: grid;
-    grid-template-columns: 1fr;
+  .card:hover {
+    border-color: var(--coral);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 22px 46px rgba(0,0,0,0.09);
   }
 
-  .card-thumb {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .card-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .card:hover .card-thumb img { transform: scale(1.03); }
+  .card-inner { display: grid; grid-template-columns: 1fr; }
 
   .card-thumb-gradient {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%; height: 150px;
+    display: flex; align-items: center; justify-content: center;
     border-bottom: 1px solid var(--rule);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
 
+  /* BRAND NAMES — now smaller */
   .card-thumb-gradient .brand-mark {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    color: rgba(255,255,255,0.9);
-    position: relative;
-    z-index: 1;
-    letter-spacing: -0.02em;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+    position: relative; z-index: 1;
+    padding: 5px 12px;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 3px;
   }
 
   .card-thumb-gradient .brand-sub {
@@ -199,70 +207,72 @@
     font-size: 9px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.6);
     position: absolute;
-    bottom: 16px;
-    left: 20px;
+    bottom: 16px; left: 20px;
     z-index: 1;
   }
 
-  .grad-sp { background: linear-gradient(135deg, #1a6b54 0%, #0e3d30 100%); }
+  .grad-sp { background: linear-gradient(135deg, #2f7a63 0%, #1a4436 100%); }
   .grad-sleep { background: linear-gradient(135deg, #2b4a7c 0%, #1a2d4d 100%); }
-  .grad-tf { background: linear-gradient(135deg, #6b4a8a 0%, #3d2a54 100%); }
-  .grad-ls { background: linear-gradient(135deg, #c4a833 0%, #7a6a1f 100%); }
+  .grad-tf { background: linear-gradient(135deg, #7c4a6b 0%, #43263d 100%); }
+  .grad-ls { background: linear-gradient(135deg, #d4772f 0%, #8a3e1f 100%); }
+  .grad-data { background: linear-gradient(135deg, #c23d1e 0%, #6b2414 100%); }
+  .grad-video { background: linear-gradient(135deg, #b23a2a 0%, #3a1a14 100%); }
 
-  .card-content { padding: 24px 28px; }
+  .card-content { padding: 28px 32px; }
 
   .card-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    line-height: 1.3;
-    color: var(--black);
-    margin-bottom: 8px;
+    font-size: 1.3rem;
+    line-height: 1.28;
+    color: var(--ink);
+    margin-bottom: 10px;
   }
 
   .card-title a {
-    color: var(--black);
+    color: var(--ink);
     text-decoration: none;
-    transition: color 0.2s ease;
+    background-image: linear-gradient(var(--coral), var(--coral));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease, color 0.2s ease;
+    padding-bottom: 2px;
   }
 
-  .card-title a:hover { color: var(--green); }
+  .card-title a:hover {
+    color: var(--coral-deep);
+    background-size: 100% 2px;
+  }
 
   .card-role {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 12px;
+    color: var(--coral);
+    margin-bottom: 14px;
   }
 
   .card-desc {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: var(--mid);
-    line-height: 1.65;
+    line-height: 1.68;
   }
 
   .card-metrics {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 14px;
-    padding-top: 14px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 16px;
     border-top: 1px solid var(--rule);
   }
 
-  .metric {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+  .metric { display: flex; flex-direction: column; gap: 3px; }
 
   .metric-value {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    color: var(--black);
+    font-size: 1.2rem;
+    color: var(--ink);
     line-height: 1;
   }
 
@@ -272,103 +282,295 @@
     line-height: 1.3;
   }
 
-  /* SYSTEM LINK */
-  .system-callout {
-    border: 2px solid var(--green);
-    border-radius: 2px;
-    padding: 32px;
-    margin-top: 64px;
-    margin-bottom: 64px;
-    background: var(--green-light);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  /* FEATURED SCROLL SHOWCASE */
+  .showcase { margin-bottom: 28px; }
+
+  .showcase-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
   }
-
-  .system-callout.visible { opacity: 1; transform: translateY(0); }
-
-  .system-callout h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: var(--black);
-    margin-bottom: 12px;
-  }
-
-  .system-callout p {
-    font-size: 0.9rem;
-    color: var(--mid);
-    line-height: 1.65;
-    margin-bottom: 16px;
-  }
-
-  .system-callout a {
+  .showcase-kicker {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--green);
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 1px solid var(--green);
-    border-radius: 2px;
-    display: inline-block;
-    transition: all 0.2s ease;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--coral-deep);
+  }
+  .showcase-hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--light);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .showcase-hint::after { content: '→'; }
+
+  .showcase-scroll {
+    display: flex; gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 18px;
+    margin: 0 -4px;
+  }
+  .showcase-scroll::-webkit-scrollbar { height: 8px; }
+  .showcase-scroll::-webkit-scrollbar-track { background: var(--coral-light); border-radius: 4px; }
+  .showcase-scroll::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 4px; }
+
+  .sc-card {
+    flex: 0 0 288px;
+    scroll-snap-align: start;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    min-height: 360px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
 
-  .system-callout a:hover {
-    background: var(--green);
-    color: white;
+  .sc-hero {
+    background: linear-gradient(150deg, #e0512f 0%, #6b2414 55%, #1a1512 100%);
+    color: var(--white);
+    padding: 30px 28px;
+    justify-content: space-between;
+    border: none;
   }
+  .sc-hero .sc-kick {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .sc-hero h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.65rem; line-height: 1.15; letter-spacing: -0.01em;
+    margin: 18px 0;
+  }
+  .sc-hero .sc-by {
+    font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;
+  }
+  .sc-hero a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--white); text-decoration: none;
+    border-bottom: 2px solid var(--coral);
+    padding-bottom: 3px; align-self: flex-start;
+  }
+  .sc-hero a:hover { color: var(--coral); }
+
+  .sc-img { padding: 0; position: relative; }
+  .sc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sc-img-fallback {
+    display: flex; flex-direction: column; justify-content: center;
+    flex: 1; padding: 30px 28px;
+    background: linear-gradient(135deg, #2f7a63 0%, #1a4436 100%);
+    color: var(--white);
+  }
+  .sc-img.has-img .sc-img-fallback { display: none; }
+  .sc-img-fallback .big {
+    font-family: 'DM Serif Display', serif; font-size: 2.6rem; line-height: 1;
+  }
+  .sc-img-fallback .small {
+    font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 12px; line-height: 1.5;
+  }
+
+  .sc-stat {
+    padding: 30px 28px; justify-content: center;
+  }
+  .sc-stat .sc-kick {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--coral-deep); margin-bottom: 16px;
+  }
+  .sc-stat .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem; line-height: 1; color: var(--ink); letter-spacing: -0.02em;
+  }
+  .sc-stat .cap {
+    font-size: 0.9rem; color: var(--mid); margin-top: 14px; line-height: 1.55;
+  }
+
+  .sc-list { padding: 30px 28px; }
+  .sc-list .sc-kick {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--coral-deep); margin-bottom: 18px;
+  }
+  .sc-list ol { list-style: none; counter-reset: rank; }
+  .sc-list li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 9px 0; border-bottom: 1px solid var(--rule);
+    font-size: 0.92rem; color: var(--mid);
+  }
+  .sc-list li:last-child { border-bottom: none; }
+  .sc-list li b {
+    font-family: 'DM Serif Display', serif; color: var(--ink); font-weight: 400;
+  }
+
+  .sc-method {
+    background: var(--ink); color: var(--white);
+    padding: 30px 28px; border: none; justify-content: center;
+  }
+  .sc-method .sc-kick {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 20px;
+  }
+  .sc-method .row {
+    display: flex; flex-direction: column; gap: 3px; margin-bottom: 18px;
+  }
+  .sc-method .row .v {
+    font-family: 'DM Serif Display', serif; font-size: 1.5rem; line-height: 1;
+  }
+  .sc-method .row .l {
+    font-size: 0.72rem; color: rgba(250,246,240,0.6); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* SUB-LINK */
+  .card-sublink {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: var(--coral-light);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+  .card-sublink a {
+    color: var(--coral-deep);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(194,61,30,0.3);
+  }
+  .card-sublink a:hover { border-bottom-color: var(--coral-deep); }
+
+  /* VIDEO LIST */
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .video-card {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 24px 26px;
+    background: var(--paper);
+    transition: border-color 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .video-card:hover {
+    border-color: var(--coral);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 18px 40px rgba(0,0,0,0.08);
+  }
+  .video-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--coral);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .video-badge::before { content: '▶'; font-size: 8px; }
+  .video-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem; line-height: 1.3; color: var(--ink);
+  }
+  .video-title a { color: var(--ink); text-decoration: none; transition: color 0.2s ease; }
+  .video-title a:hover { color: var(--coral-deep); }
+  .video-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.55; flex: 1; }
+  .video-views {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--light); padding-top: 10px; border-top: 1px solid var(--rule);
+  }
+  .video-views strong { color: var(--coral-deep); font-weight: 500; }
+
+  /* CTA */
+  .cta {
+    margin-top: 84px;
+    padding: 56px 48px;
+    background: linear-gradient(135deg, #6b2414 0%, #1a1512 100%);
+    border-radius: 6px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .cta.visible { opacity: 1; transform: translateY(0); }
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224,81,47,0.32) 0%, transparent 70%);
+  }
+  .cta h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.1rem);
+    color: var(--white); margin-bottom: 14px;
+    position: relative; z-index: 1;
+  }
+  .cta p {
+    color: rgba(250,246,240,0.72);
+    max-width: 480px; margin: 0 auto 30px;
+    position: relative; z-index: 1;
+  }
+  .cta a {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--black); background: var(--coral);
+    text-decoration: none; padding: 15px 30px;
+    border-radius: 3px; font-weight: 500;
+    position: relative; z-index: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,81,47,0.4); }
 
   /* FOOTER */
   footer {
     background: var(--black);
-    color: rgba(248,246,241,0.5);
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    font-size: 0.85rem;
+    color: rgba(250,246,240,0.5);
+    padding: 48px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; font-size: 0.85rem;
+    border-top: 8px solid var(--coral);
   }
-
-  footer a {
-    color: var(--green);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
+  footer a { color: var(--coral); text-decoration: none; font-weight: 500; }
   footer a:hover { text-decoration: underline; }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   @media (max-width: 600px) {
-    header { padding: 48px 24px 40px; }
-    main { padding: 48px 20px 80px; }
-    footer { padding: 32px 24px; }
-    .card-thumb, .card-thumb-gradient { height: 140px; }
+    header { padding: 64px 26px 48px; }
+    main { padding: 56px 22px 80px; }
+    footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+    .card-thumb-gradient { height: 120px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .cta { padding: 40px 26px; }
+    .sc-card { flex-basis: 82vw; }
   }
 </style>
 </head>
 <body>
 
+<div class="progress-bar" id="progress"></div>
+
 <header>
-  <div class="eyebrow">Content Portfolio</div>
-  <h1>Jess Barron</h1>
-  <p class="header-sub">15+ years building content engines and editorial operations at the intersection of health, wellness, and technology. This portfolio features selected work across data journalism, clinical content, consumer health, video production, and enterprise storytelling.</p>
+  <div class="header-inner">
+    <div class="eyebrow">Content Portfolio</div>
+    <h1>Jess Barron</h1>
+    <p class="header-sub">15+ years building content engines and editorial operations at the intersection of health, wellness, and technology. Selected work across data journalism, product GTM, clinical content, consumer health, video production, and editorial systems.</p>
+  </div>
 </header>
 
 <main>
 
   <nav class="portfolio-nav">
     <a href="#data" class="active">Data Journalism</a>
+    <a href="#gtm">Product GTM</a>
     <a href="#clinical">Clinical Content</a>
     <a href="#consumer">Consumer Health</a>
     <a href="#video">Video &amp; Multimedia</a>
+    <a href="#interviews">Interview Series</a>
     <a href="#system">Content System</a>
   </nav>
 
@@ -376,20 +578,108 @@
   <div class="category" id="data">
     <div class="category-label">Data Journalism &amp; Lead Generation</div>
 
+    <!-- FEATURED SCROLL SHOWCASE: Cost of Therapy -->
+    <div class="showcase">
+      <div class="showcase-head">
+        <div class="showcase-kicker">Featured &bull; SimplePractice &bull; Bylined by Jess Barron</div>
+        <div class="showcase-hint">Scroll</div>
+      </div>
+      <div class="showcase-scroll">
+
+        <div class="sc-card sc-hero">
+          <div class="sc-kick">Data Journalism</div>
+          <h4>The Average Cost of Therapy in America by State</h4>
+          <div class="sc-by">By Jess Barron &middot; March 11, 2025</div>
+          <a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">Read the full article</a>
+        </div>
+
+        <div class="sc-card sc-img" id="sc-hero-img">
+          <img src="images/therapy-cost-hero.jpg" alt="The average cost of therapy in America by state"
+               onload="this.closest('.sc-img').classList.add('has-img')"
+               onerror="this.remove()">
+          <div class="sc-img-fallback">
+            <div class="big">$123&rarr;$139</div>
+            <div class="small">Average therapy session cost rose <b>+12.6%</b> from 2019 to 2024.</div>
+          </div>
+        </div>
+
+        <div class="sc-card sc-stat">
+          <div class="sc-kick">Price Range</div>
+          <div class="num">$122&ndash;$227</div>
+          <div class="cap">The per-session cost of therapy from the lowest state to the highest, revealing patterns that defy conventional wisdom.</div>
+        </div>
+
+        <div class="sc-card sc-list">
+          <div class="sc-kick">Highest-Cost States</div>
+          <ol>
+            <li>North Dakota <b>$227</b></li>
+            <li>Alaska <b>$212</b></li>
+            <li>South Dakota <b>$192</b></li>
+            <li>Washington D.C. <b>$189</b></li>
+            <li>Arkansas <b>$184</b></li>
+          </ol>
+        </div>
+
+        <div class="sc-card sc-list">
+          <div class="sc-kick">Lowest-Cost States</div>
+          <ol>
+            <li>Missouri <b>$122</b></li>
+            <li>Louisiana <b>$123</b></li>
+            <li>South Carolina <b>$123</b></li>
+            <li>Vermont <b>$126</b></li>
+            <li>Tennessee <b>$126</b></li>
+          </ol>
+        </div>
+
+        <div class="sc-card sc-method">
+          <div class="sc-kick">The Dataset</div>
+          <div class="row"><span class="v">105M</span><span class="l">Therapy sessions analyzed</span></div>
+          <div class="row"><span class="v">204K</span><span class="l">Behavioral health therapists</span></div>
+          <div class="row"><span class="v">50 + D.C.</span><span class="l">Every U.S. state</span></div>
+          <div class="row"><span class="v">Gated</span><span class="l">24-page white paper</span></div>
+        </div>
+
+        <div class="sc-card sc-hero" style="background:linear-gradient(150deg,#2f7a63 0%,#1a4436 100%);">
+          <div class="sc-kick">Keep Reading</div>
+          <h4>See the full state-by-state breakdown</h4>
+          <div class="sc-by">Insurance vs. self-pay, access gaps, and the true cost of care.</div>
+          <a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">Open the article</a>
+        </div>
+
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-inner">
-        <div class="card-thumb-gradient grad-sp">
+        <div class="card-thumb-gradient grad-data">
           <div class="brand-mark">SimplePractice</div>
-          <div class="brand-sub">Data Journalism &bull; 105M Sessions Analyzed</div>
+          <div class="brand-sub">Proprietary Data &bull; 225K+ Clinicians</div>
         </div>
         <div class="card-content">
-          <div class="card-role">Bylined Author &amp; Content Strategist</div>
-          <div class="card-title"><a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">The Average Cost of Therapy in America by State</a></div>
-          <div class="card-desc">Bylined article built on a comprehensive analysis of nearly 105 million therapy sessions using proprietary SimplePractice data. Part of a two-article email collection strategy with a companion gated 24-page white paper. Unprecedented dataset from nearly 204,000 behavioral health therapists across all 50 states.</div>
+          <div class="card-role">Author &amp; Content Strategist</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/top-billed-icd-10-codes/" target="_blank">The Top 20 Mental Health ICD-10 Codes Reveal Mental Health Trends</a></div>
+          <div class="card-desc">A data-driven analysis I built using proprietary billing data from 225,000+ U.S. clinicians on SimplePractice's HIPAA-compliant EHR. By identifying the 20 most common ICD-10 diagnostic codes submitted on insurance claims, the piece opened a rare window into the most prevalent mental health diagnoses across America, turning internal data into authoritative, widely-referenced editorial.</div>
           <div class="card-metrics">
-            <div class="metric"><div class="metric-value">105M</div><div class="metric-label">Sessions analyzed</div></div>
-            <div class="metric"><div class="metric-value">204K</div><div class="metric-label">Therapists in dataset</div></div>
-            <div class="metric"><div class="metric-value">Gated</div><div class="metric-label">24-page white paper</div></div>
+            <div class="metric"><div class="metric-value">225K+</div><div class="metric-label">Clinicians in dataset</div></div>
+            <div class="metric"><div class="metric-value">Top 20</div><div class="metric-label">ICD-10 codes analyzed</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-thumb-gradient grad-data">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Original Survey &bull; State of Therapist Well-Being</div>
+        </div>
+        <div class="card-content">
+          <div class="card-role">Content Strategist &amp; Editor</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/therapist-burnout-report/" target="_blank">Therapists Are Burning Out: Here's Why, What the Impact Is, and How to Help</a></div>
+          <div class="card-desc">A flagship editorial anchored to original research: a survey of 550 therapists conducted for World Mental Health Day to quantify and contextualize therapist burnout. I turned the findings into a companion blog piece and the 2023 State of Therapist Well-Being Report, positioning SimplePractice as a brand that takes care of the caregivers and generating earned attention around a mission-critical industry issue.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">550</div><div class="metric-label">Therapists surveyed</div></div>
+            <div class="metric"><div class="metric-value">Report</div><div class="metric-label">2023 State of Therapist Well-Being</div></div>
           </div>
         </div>
       </div>
@@ -403,11 +693,70 @@
         </div>
         <div class="card-content">
           <div class="card-role">Author &amp; Head of Content</div>
-          <div class="card-title"><a href="https://www.sleep.com/sleep-health/most-sleep-deprived-cities" target="_blank">America's Most Sleep-Deprived Cities</a></div>
+          <div class="card-title"><a href="https://www.sleep.com/sleepycities" target="_blank">America's Most Sleep-Deprived Cities</a></div>
           <div class="card-desc">Researched and wrote this data-driven article using proprietary data from partner SleepScore Labs. Became the most-viewed article on Sleep.com in 2021, demonstrating how original data partnerships can drive outsized audience engagement.</div>
           <div class="card-metrics">
             <div class="metric"><div class="metric-value">250K+</div><div class="metric-label">Views in first 8 months</div></div>
-            <div class="metric"><div class="metric-value">#1</div><div class="metric-label">Most-viewed article on Sleep.com, 2021</div></div>
+            <div class="metric"><div class="metric-value">#1</div><div class="metric-label">Most-viewed on Sleep.com, 2021</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT GTM (moved up) -->
+  <div class="category" id="gtm">
+    <div class="category-label">Product GTM &amp; Launch Content</div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-thumb-gradient grad-sp">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Product GTM &bull; AI Note Taker Launch</div>
+        </div>
+        <div class="card-content">
+          <div class="card-role">Content Strategist &amp; Editor</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/ai-in-therapy/" target="_blank">Navigating AI in Therapy: A Guide for Clinicians and Clients</a></div>
+          <div class="card-desc">A cornerstone piece in the go-to-market campaign for SimplePractice's AI Note Taker. Rather than leading with product features, I built trust first: addressing the real questions and anxieties clinicians and clients have about AI in a therapeutic setting. The result was launch content that established credibility and reduced friction around adoption, connecting a sensitive product story to a skeptical clinical audience.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">GTM</div><div class="metric-label">AI Note Taker launch campaign</div></div>
+            <div class="metric"><div class="metric-value">Trust-first</div><div class="metric-label">Adoption-focused positioning</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-thumb-gradient grad-sp">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Product GTM &bull; ePrescribe Adoption</div>
+        </div>
+        <div class="card-content">
+          <div class="card-role">Content Strategist &amp; Editor</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/eprescribe-medications-prescriptions/" target="_blank">How to Use ePrescribe to Easily Authorize and Prescribe Medications</a></div>
+          <div class="card-desc">Product-education content supporting SimplePractice's ePrescribe feature. A clear, step-by-step guide that turns a compliance-sensitive clinical workflow into confident, actionable guidance, built to drive feature activation and reduce support friction at the moment clinicians need it most.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">Adoption</div><div class="metric-label">Feature activation content</div></div>
+            <div class="metric"><div class="metric-value">How-to</div><div class="metric-label">Compliance-sensitive workflow</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-thumb-gradient grad-sp">
+          <div class="brand-mark">SimplePractice</div>
+          <div class="brand-sub">Product GTM &bull; Group Therapy Scheduling</div>
+        </div>
+        <div class="card-content">
+          <div class="card-role">Content Strategist &amp; Editor</div>
+          <div class="card-title"><a href="https://www.simplepractice.com/blog/group-therapy-appointments/" target="_blank">How to Book Group Therapy Appointments</a></div>
+          <div class="card-desc">A how-to guide supporting adoption of group therapy scheduling in SimplePractice. Meets clinicians at the point of need with practical steps that lower the barrier to a revenue-expanding workflow, reinforcing the platform as the operating system for a modern practice.</div>
+          <div class="card-metrics">
+            <div class="metric"><div class="metric-value">Adoption</div><div class="metric-label">Feature activation content</div></div>
+            <div class="metric"><div class="metric-value">How-to</div><div class="metric-label">Revenue-expanding workflow</div></div>
           </div>
         </div>
       </div>
@@ -473,7 +822,7 @@
         </div>
         <div class="card-content">
           <div class="card-role">Author &amp; Head of Content</div>
-          <div class="card-title"><a href="https://www.sleep.com/sleep-health/summer-sleep-study" target="_blank">The Surprising Effect Summer's Long Days Have on Americans' Sleep</a></div>
+          <div class="card-title"><a href="https://www.sleep.com/sleep-health/summer-effect-on-sleep" target="_blank">The Surprising Effect Summer's Long Days Have on Americans' Sleep</a></div>
           <div class="card-desc">Researched and wrote this article with SleepScore Labs data and input from applied sleep scientist Elie Gottlieb, Ph.D. Demonstrates ability to translate complex scientific data into accessible consumer health narratives.</div>
         </div>
       </div>
@@ -492,7 +841,7 @@
         </div>
         <div class="card-content">
           <div class="card-role">Creator &amp; Executive Producer</div>
-          <div class="card-title">"8 Days to 8 Hours" Behavior Change Video Course</div>
+          <div class="card-title"><a href="https://www.sleep.com/8-days-to-8-hours-sleep-program" target="_blank">"8 Days to 8 Hours" Behavior Change Video Course</a></div>
           <div class="card-desc">Conceived, developed, and produced an original 8-day behavior change video course hosted by neurologist and sleep specialist Chris Winter, MD. Built to help audiences build better sleep habits through one small, science-backed step per day. Collected emails and built Sleep.com's email list to over 100,000 recipients.</div>
           <div class="card-metrics">
             <div class="metric"><div class="metric-value">100K+</div><div class="metric-label">Email subscribers generated</div></div>
@@ -514,15 +863,52 @@
           <div class="card-desc">Traveled to Mexico to research, report, and write the long-form article. Voiced and wrote the script for LIVESTRONG's first-ever 9-minute short documentary video, created to bring light to environmental issues facing the ocean.</div>
           <div class="card-metrics">
             <div class="metric"><div class="metric-value">24K</div><div class="metric-label">Documentary views</div></div>
-            <div class="metric"><div class="metric-value">97K</div><div class="metric-label">Facebook short-form views</div></div>
+          </div>
+          <div class="card-sublink">
+            I also repurposed the 9-minute documentary into a <a href="https://www.facebook.com/livestrongcom/videos/10157236905334989/" target="_blank">1-minute short-form social cut for Facebook</a>, which reached 97K views organically.
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SYSTEM CALLOUT -->
-  <div class="system-callout" id="system">
+  <!-- INTERVIEW SERIES -->
+  <div class="category" id="interviews">
+    <div class="category-label">On-Camera Interview Series &bull; LIVESTRONG</div>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-badge">YouTube Interview</div>
+        <div class="video-title"><a href="https://www.youtube.com/watch?v=bYwXX04hoP4" target="_blank">Shaun T</a></div>
+        <div class="video-desc">On-camera interview I conducted with the Beachbody fitness trainer and creator of the INSANITY workout program.</div>
+        <div class="video-views"><strong>39K</strong> views</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-badge">YouTube Interview</div>
+        <div class="video-title"><a href="https://www.youtube.com/watch?v=ByCC7JatMIY" target="_blank">Jillian Michaels</a></div>
+        <div class="video-desc">On-camera interview I conducted live onstage at the Rose Bowl in 2018 with the celebrity trainer and entrepreneur.</div>
+        <div class="video-views"><strong>13K</strong> views</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-badge">YouTube Interview</div>
+        <div class="video-title"><a href="https://www.youtube.com/watch?v=ciW9pLm-soM" target="_blank">Lauren Bushnell</a></div>
+        <div class="video-desc">On-camera interview I conducted with "The Bachelor" contestant and fitness and lifestyle influencer.</div>
+        <div class="video-views"><strong>30K</strong> views</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-badge">YouTube Interview</div>
+        <div class="video-title"><a href="https://www.youtube.com/watch?v=73QRMEBIg0U&list=PLwvDl9NjQOojb70mq2JOZJ58qrXOy4Zwu&index=5" target="_blank">Ana Ivanović</a></div>
+        <div class="video-desc">On-camera interview I conducted with the former professional tennis player at Cannes Lions.</div>
+        <div class="video-views"><strong>13K</strong> views</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYSTEM CTA -->
+  <div class="cta" id="system">
     <h3>The Content Machine I Built at SimplePractice</h3>
     <p>Beyond individual pieces, I designed the AI-augmented editorial system that produced 1,200+ pieces annually and drove 4,374 paid customer accounts. This case study walks through the pipeline architecture, AI workflows, contributor network, and measurement framework I built from scratch.</p>
     <a href="https://jessbarron.github.io/content-system/" target="_blank">View the full case study</a>
@@ -546,14 +932,19 @@
     });
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.category, .system-callout').forEach(s => observer.observe(s));
+  document.querySelectorAll('.category, .cta').forEach(s => observer.observe(s));
 
-  // Simple nav highlighting
   document.querySelectorAll('.portfolio-nav a').forEach(link => {
     link.addEventListener('click', function() {
       document.querySelectorAll('.portfolio-nav a').forEach(l => l.classList.remove('active'));
       this.classList.add('active');
     });
+  });
+
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = scrolled + '%';
   });
 </script>
 
