@@ -17,6 +17,8 @@
     --mid: #443b34;
     --light: #96897d;
     --rule: #e8ddd0;
+    --sp-yellow: #f7be00;   /* SimplePractice sun yellow */
+    --sp-ink: #123d31;      /* SimplePractice dark green (logo wordmark) */
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,7 +51,6 @@
     overflow: hidden;
     border-bottom: 8px solid var(--coral);
   }
-
   header::before {
     content: '';
     position: absolute;
@@ -59,7 +60,6 @@
     background: radial-gradient(circle, rgba(224,81,47,0.32) 0%, transparent 68%);
     pointer-events: none;
   }
-
   header::after {
     content: '';
     position: absolute;
@@ -69,7 +69,6 @@
     background: radial-gradient(circle, rgba(224,81,47,0.14) 0%, transparent 70%);
     pointer-events: none;
   }
-
   .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
 
   .eyebrow {
@@ -94,7 +93,6 @@
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.2s;
   }
-
   h1 em { font-style: italic; color: var(--coral); }
 
   .header-sub {
@@ -116,7 +114,6 @@
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.5s;
   }
-
   .portfolio-nav a {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -129,7 +126,6 @@
     border-radius: 3px;
     transition: all 0.2s ease;
   }
-
   .portfolio-nav a:hover, .portfolio-nav a.active {
     color: var(--coral-deep);
     border-color: var(--coral);
@@ -143,7 +139,7 @@
   }
   .category.visible { opacity: 1; transform: translateY(0); }
 
-  /* SECTION NAMES — now large serif headings */
+  /* SECTION NAMES — large serif headings */
   .category-label {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(1.7rem, 4vw, 2.3rem);
@@ -172,13 +168,11 @@
     transition: border-color 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
-
   .card:hover {
     border-color: var(--coral);
     transform: translateY(-4px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 22px 46px rgba(0,0,0,0.09);
   }
-
   .card-inner { display: grid; grid-template-columns: 1fr; }
 
   .card-thumb-gradient {
@@ -188,7 +182,7 @@
     position: relative; overflow: hidden;
   }
 
-  /* BRAND NAMES — now smaller */
+  /* BRAND NAMES — smaller */
   .card-thumb-gradient .brand-mark {
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
@@ -201,7 +195,6 @@
     border: 1px solid rgba(255,255,255,0.35);
     border-radius: 3px;
   }
-
   .card-thumb-gradient .brand-sub {
     font-family: 'DM Mono', monospace;
     font-size: 9px;
@@ -213,12 +206,27 @@
     z-index: 1;
   }
 
-  .grad-sp { background: linear-gradient(135deg, #2f7a63 0%, #1a4436 100%); }
+  /* BRAND GRADIENTS */
   .grad-sleep { background: linear-gradient(135deg, #2b4a7c 0%, #1a2d4d 100%); }
   .grad-tf { background: linear-gradient(135deg, #7c4a6b 0%, #43263d 100%); }
   .grad-ls { background: linear-gradient(135deg, #d4772f 0%, #8a3e1f 100%); }
-  .grad-data { background: linear-gradient(135deg, #c23d1e 0%, #6b2414 100%); }
-  .grad-video { background: linear-gradient(135deg, #b23a2a 0%, #3a1a14 100%); }
+
+  /* SIMPLEPRACTICE — sun yellow + embedded logo */
+  .grad-sp { background: var(--sp-yellow); }
+  .sp-logo {
+    width: 60%;
+    max-width: 248px;
+    height: auto;
+    object-fit: contain;
+    position: relative; z-index: 1;
+    display: block;
+  }
+  .grad-sp .brand-mark {           /* text fallback if logo image is missing */
+    color: var(--sp-ink);
+    border-color: rgba(18,61,49,0.35);
+    display: none;
+  }
+  .grad-sp .brand-sub { color: rgba(18,61,49,0.72); }
 
   .card-content { padding: 28px 32px; }
 
@@ -229,7 +237,6 @@
     color: var(--ink);
     margin-bottom: 10px;
   }
-
   .card-title a {
     color: var(--ink);
     text-decoration: none;
@@ -240,11 +247,7 @@
     transition: background-size 0.3s ease, color 0.2s ease;
     padding-bottom: 2px;
   }
-
-  .card-title a:hover {
-    color: var(--coral-deep);
-    background-size: 100% 2px;
-  }
+  .card-title a:hover { color: var(--coral-deep); background-size: 100% 2px; }
 
   .card-role {
     font-family: 'DM Mono', monospace;
@@ -254,173 +257,45 @@
     color: var(--coral);
     margin-bottom: 14px;
   }
-
-  .card-desc {
-    font-size: 0.92rem;
-    color: var(--mid);
-    line-height: 1.68;
-  }
+  .card-desc { font-size: 0.92rem; color: var(--mid); line-height: 1.68; }
 
   .card-metrics {
     display: flex; gap: 24px; flex-wrap: wrap;
     margin-top: 16px; padding-top: 16px;
     border-top: 1px solid var(--rule);
   }
-
   .metric { display: flex; flex-direction: column; gap: 3px; }
+  .metric-value { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--ink); line-height: 1; }
+  .metric-label { font-size: 0.7rem; color: var(--light); line-height: 1.3; }
 
-  .metric-value {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
-    color: var(--ink);
-    line-height: 1;
-  }
-
-  .metric-label {
-    font-size: 0.7rem;
-    color: var(--light);
-    line-height: 1.3;
-  }
-
-  /* FEATURED SCROLL SHOWCASE */
-  .showcase { margin-bottom: 28px; }
-
-  .showcase-head {
+  /* FEATURED ARTICLE GALLERY */
+  .article-gallery { margin-bottom: 28px; }
+  .ag-head {
     display: flex; align-items: baseline; justify-content: space-between;
-    flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
+    flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
   }
-  .showcase-kicker {
+  .ag-kicker {
     font-family: 'DM Mono', monospace;
     font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--coral-deep);
   }
-  .showcase-hint {
+  .ag-link {
     font-family: 'DM Mono', monospace;
     font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--light);
-    display: flex; align-items: center; gap: 6px;
+    color: var(--light); text-decoration: none;
   }
-  .showcase-hint::after { content: '→'; }
-
-  .showcase-scroll {
-    display: flex; gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 4px 4px 18px;
-    margin: 0 -4px;
-  }
-  .showcase-scroll::-webkit-scrollbar { height: 8px; }
-  .showcase-scroll::-webkit-scrollbar-track { background: var(--coral-light); border-radius: 4px; }
-  .showcase-scroll::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 4px; }
-
-  .sc-card {
-    flex: 0 0 288px;
-    scroll-snap-align: start;
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex; flex-direction: column;
-    min-height: 360px;
+  .ag-link:hover { color: var(--coral-deep); }
+  .ag-hero {
+    display: block; border-radius: 6px; overflow: hidden;
     border: 1px solid var(--rule);
-    background: var(--paper);
     box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
   }
-
-  .sc-hero {
-    background: linear-gradient(150deg, #e0512f 0%, #6b2414 55%, #1a1512 100%);
-    color: var(--white);
-    padding: 30px 28px;
-    justify-content: space-between;
-    border: none;
+  .ag-hero:hover {
+    transform: translateY(-4px); border-color: var(--coral);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 22px 46px rgba(0,0,0,0.09);
   }
-  .sc-hero .sc-kick {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-  }
-  .sc-hero h4 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.65rem; line-height: 1.15; letter-spacing: -0.01em;
-    margin: 18px 0;
-  }
-  .sc-hero .sc-by {
-    font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;
-  }
-  .sc-hero a {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--white); text-decoration: none;
-    border-bottom: 2px solid var(--coral);
-    padding-bottom: 3px; align-self: flex-start;
-  }
-  .sc-hero a:hover { color: var(--coral); }
-
-  .sc-img { padding: 0; position: relative; }
-  .sc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .sc-img-fallback {
-    display: flex; flex-direction: column; justify-content: center;
-    flex: 1; padding: 30px 28px;
-    background: linear-gradient(135deg, #2f7a63 0%, #1a4436 100%);
-    color: var(--white);
-  }
-  .sc-img.has-img .sc-img-fallback { display: none; }
-  .sc-img-fallback .big {
-    font-family: 'DM Serif Display', serif; font-size: 2.6rem; line-height: 1;
-  }
-  .sc-img-fallback .small {
-    font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 12px; line-height: 1.5;
-  }
-
-  .sc-stat {
-    padding: 30px 28px; justify-content: center;
-  }
-  .sc-stat .sc-kick {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--coral-deep); margin-bottom: 16px;
-  }
-  .sc-stat .num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3rem; line-height: 1; color: var(--ink); letter-spacing: -0.02em;
-  }
-  .sc-stat .cap {
-    font-size: 0.9rem; color: var(--mid); margin-top: 14px; line-height: 1.55;
-  }
-
-  .sc-list { padding: 30px 28px; }
-  .sc-list .sc-kick {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--coral-deep); margin-bottom: 18px;
-  }
-  .sc-list ol { list-style: none; counter-reset: rank; }
-  .sc-list li {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 9px 0; border-bottom: 1px solid var(--rule);
-    font-size: 0.92rem; color: var(--mid);
-  }
-  .sc-list li:last-child { border-bottom: none; }
-  .sc-list li b {
-    font-family: 'DM Serif Display', serif; color: var(--ink); font-weight: 400;
-  }
-
-  .sc-method {
-    background: var(--ink); color: var(--white);
-    padding: 30px 28px; border: none; justify-content: center;
-  }
-  .sc-method .sc-kick {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--coral); margin-bottom: 20px;
-  }
-  .sc-method .row {
-    display: flex; flex-direction: column; gap: 3px; margin-bottom: 18px;
-  }
-  .sc-method .row .v {
-    font-family: 'DM Serif Display', serif; font-size: 1.5rem; line-height: 1;
-  }
-  .sc-method .row .l {
-    font-size: 0.72rem; color: rgba(250,246,240,0.6); text-transform: uppercase; letter-spacing: 0.06em;
-  }
+  .ag-hero img { width: 100%; height: auto; display: block; }
 
   /* SUB-LINK */
   .card-sublink {
@@ -442,7 +317,6 @@
 
   /* VIDEO LIST */
   .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
   .video-card {
     border: 1px solid var(--rule);
     border-radius: 6px;
@@ -464,10 +338,7 @@
     display: flex; align-items: center; gap: 8px;
   }
   .video-badge::before { content: '▶'; font-size: 8px; }
-  .video-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem; line-height: 1.3; color: var(--ink);
-  }
+  .video-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.3; color: var(--ink); }
   .video-title a { color: var(--ink); text-decoration: none; transition: color 0.2s ease; }
   .video-title a:hover { color: var(--coral-deep); }
   .video-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.55; flex: 1; }
@@ -505,11 +376,7 @@
     color: var(--white); margin-bottom: 14px;
     position: relative; z-index: 1;
   }
-  .cta p {
-    color: rgba(250,246,240,0.72);
-    max-width: 480px; margin: 0 auto 30px;
-    position: relative; z-index: 1;
-  }
+  .cta p { color: rgba(250,246,240,0.72); max-width: 480px; margin: 0 auto 30px; position: relative; z-index: 1; }
   .cta a {
     display: inline-block;
     font-family: 'DM Mono', monospace;
@@ -544,9 +411,9 @@
     main { padding: 56px 22px 80px; }
     footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
     .card-thumb-gradient { height: 120px; }
+    .sp-logo { width: 66%; }
     .video-grid { grid-template-columns: 1fr; }
     .cta { padding: 40px 26px; }
-    .sc-card { flex-basis: 82vw; }
   }
 </style>
 </head>
@@ -577,9 +444,11 @@
   <!-- DATA JOURNALISM -->
   <div class="category" id="data">
     <div class="category-label">Data Journalism &amp; Lead Generation</div>
-     <div class="card">
+
+    <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Data Journalism &bull; 105M Sessions Analyzed</div>
         </div>
@@ -596,82 +465,21 @@
       </div>
     </div>
 
-   <!-- FEATURED ARTICLE GALLERY: Cost of Therapy -->
-    <style>
-      .article-gallery { margin-bottom: 28px; }
-      .ag-head {
-        display: flex; align-items: baseline; justify-content: space-between;
-        flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
-      }
-      .ag-kicker {
-        font-family: 'DM Mono', monospace;
-        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--coral-deep);
-      }
-      .ag-link {
-        font-family: 'DM Mono', monospace;
-        font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
-        color: var(--light); text-decoration: none;
-      }
-      .ag-link:hover { color: var(--coral-deep); }
-      .ag-hero {
-        display: block; border-radius: 6px; overflow: hidden;
-        border: 1px solid var(--rule); margin-bottom: 16px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
-      }
-      .ag-hero:hover {
-        transform: translateY(-4px); border-color: var(--coral);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 22px 46px rgba(0,0,0,0.09);
-      }
-      .ag-hero img { width: 100%; height: auto; display: block; }
-      .ag-grid {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      }
-      .ag-thumb {
-        display: block; border-radius: 6px; overflow: hidden;
-        border: 1px solid var(--rule); background: var(--paper);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
-      }
-      .ag-thumb:hover {
-        transform: translateY(-4px); border-color: var(--coral);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 18px 40px rgba(0,0,0,0.08);
-      }
-      .ag-thumb img {
-        width: 100%; height: 300px; object-fit: cover; object-position: top;
-        display: block;
-      }
-      @media (max-width: 600px) {
-        .ag-grid { grid-template-columns: 1fr; }
-        .ag-thumb img { height: auto; }
-      }
-    </style>
-
+    <!-- FEATURED ARTICLE GALLERY: Cost of Therapy -->
     <div class="article-gallery">
       <div class="ag-head">
         <div class="ag-kicker">Featured &bull; SimplePractice &bull; Bylined by Jess Barron</div>
         <a class="ag-link" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">Read the full article &rarr;</a>
       </div>
-
-  
-
-      <div class="ag-grid">
-        <a class="ag-thumb" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">
-          <img src="images/therapy-cost-01.jpg" alt="Article opening: the rising cost of therapy" onerror="this.closest('.ag-thumb').style.display='none'">
-        </a>
-      
-     
-      </div>
-    </div>
-   
-
-      </div>
+      <a class="ag-hero" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">
+        <img src="images/therapy-cost-01.jpg" alt="The Average Cost of Therapy in America by State — article" onerror="this.closest('.ag-hero').style.display='none'">
+      </a>
     </div>
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-thumb-gradient grad-data">
+        <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Proprietary Data &bull; 225K+ Clinicians</div>
         </div>
@@ -689,7 +497,8 @@
 
     <div class="card">
       <div class="card-inner">
-        <div class="card-thumb-gradient grad-data">
+        <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Original Survey &bull; State of Therapist Well-Being</div>
         </div>
@@ -724,13 +533,14 @@
     </div>
   </div>
 
-  <!-- PRODUCT GTM (moved up) -->
+  <!-- PRODUCT GTM -->
   <div class="category" id="gtm">
     <div class="category-label">Product GTM &amp; Launch Content</div>
 
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Product GTM &bull; AI Note Taker Launch</div>
         </div>
@@ -749,6 +559,7 @@
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Product GTM &bull; ePrescribe Adoption</div>
         </div>
@@ -767,6 +578,7 @@
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Product GTM &bull; Group Therapy Scheduling</div>
         </div>
@@ -790,6 +602,7 @@
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Clinical Content &bull; Published Pre-Election 2024</div>
         </div>
@@ -804,6 +617,7 @@
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-sp">
+          <img class="sp-logo" src="images/simplepractice-logo.png" alt="SimplePractice" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark">SimplePractice</div>
           <div class="brand-sub">Sensitive Clinical Content &bull; Editorial Judgment</div>
         </div>
