@@ -596,73 +596,81 @@
       </div>
     </div>
 
-    <!-- FEATURED SCROLL SHOWCASE: Cost of Therapy -->
-    <div class="showcase">
-      <div class="showcase-head">
-        <div class="showcase-kicker">Featured &bull; SimplePractice &bull; Bylined by Jess Barron</div>
-        <div class="showcase-hint">Scroll</div>
+   <!-- FEATURED ARTICLE GALLERY: Cost of Therapy -->
+    <style>
+      .article-gallery { margin-bottom: 28px; }
+      .ag-head {
+        display: flex; align-items: baseline; justify-content: space-between;
+        flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+      }
+      .ag-kicker {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--coral-deep);
+      }
+      .ag-link {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--light); text-decoration: none;
+      }
+      .ag-link:hover { color: var(--coral-deep); }
+      .ag-hero {
+        display: block; border-radius: 6px; overflow: hidden;
+        border: 1px solid var(--rule); margin-bottom: 16px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
+      }
+      .ag-hero:hover {
+        transform: translateY(-4px); border-color: var(--coral);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 22px 46px rgba(0,0,0,0.09);
+      }
+      .ag-hero img { width: 100%; height: auto; display: block; }
+      .ag-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      }
+      .ag-thumb {
+        display: block; border-radius: 6px; overflow: hidden;
+        border: 1px solid var(--rule); background: var(--paper);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
+      }
+      .ag-thumb:hover {
+        transform: translateY(-4px); border-color: var(--coral);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 18px 40px rgba(0,0,0,0.08);
+      }
+      .ag-thumb img {
+        width: 100%; height: 300px; object-fit: cover; object-position: top;
+        display: block;
+      }
+      @media (max-width: 600px) {
+        .ag-grid { grid-template-columns: 1fr; }
+        .ag-thumb img { height: auto; }
+      }
+    </style>
+
+    <div class="article-gallery">
+      <div class="ag-head">
+        <div class="ag-kicker">Featured &bull; SimplePractice &bull; Bylined by Jess Barron</div>
+        <a class="ag-link" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">Read the full article &rarr;</a>
       </div>
-      <div class="showcase-scroll">
 
-        <div class="sc-card sc-hero">
-          <div class="sc-kick">Data Journalism</div>
-          <h4>The Average Cost of Therapy in America by State</h4>
-          <div class="sc-by">By Jess Barron &middot; March 11, 2025</div>
-          <a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">Read the full article</a>
-        </div>
+      <a class="ag-hero" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">
+        <img src="images/therapy-cost-hero.jpg" alt="The Average Cost of Therapy in America by State — article hero" onerror="this.closest('.ag-hero').style.display='none'">
+      </a>
 
-        <div class="sc-card sc-img" id="sc-hero-img">
-          <img src="images/therapy-cost-hero.jpg" alt="The average cost of therapy in America by state"
-               onload="this.closest('.sc-img').classList.add('has-img')"
-               onerror="this.remove()">
-          <div class="sc-img-fallback">
-            <div class="big">$123&rarr;$139</div>
-            <div class="small">Average therapy session cost rose <b>+12.6%</b> from 2019 to 2024.</div>
-          </div>
-        </div>
-
-        <div class="sc-card sc-stat">
-          <div class="sc-kick">Price Range</div>
-          <div class="num">$122&ndash;$227</div>
-          <div class="cap">The per-session cost of therapy from the lowest state to the highest, revealing patterns that defy conventional wisdom.</div>
-        </div>
-
-        <div class="sc-card sc-list">
-          <div class="sc-kick">Highest-Cost States</div>
-          <ol>
-            <li>North Dakota <b>$227</b></li>
-            <li>Alaska <b>$212</b></li>
-            <li>South Dakota <b>$192</b></li>
-            <li>Washington D.C. <b>$189</b></li>
-            <li>Arkansas <b>$184</b></li>
-          </ol>
-        </div>
-
-        <div class="sc-card sc-list">
-          <div class="sc-kick">Lowest-Cost States</div>
-          <ol>
-            <li>Missouri <b>$122</b></li>
-            <li>Louisiana <b>$123</b></li>
-            <li>South Carolina <b>$123</b></li>
-            <li>Vermont <b>$126</b></li>
-            <li>Tennessee <b>$126</b></li>
-          </ol>
-        </div>
-
-        <div class="sc-card sc-method">
-          <div class="sc-kick">The Dataset</div>
-          <div class="row"><span class="v">105M</span><span class="l">Therapy sessions analyzed</span></div>
-          <div class="row"><span class="v">204K</span><span class="l">Behavioral health therapists</span></div>
-          <div class="row"><span class="v">50 + D.C.</span><span class="l">Every U.S. state</span></div>
-          <div class="row"><span class="v">Gated</span><span class="l">24-page white paper</span></div>
-        </div>
-
-        <div class="sc-card sc-hero" style="background:linear-gradient(150deg,#2f7a63 0%,#1a4436 100%);">
-          <div class="sc-kick">Keep Reading</div>
-          <h4>See the full state-by-state breakdown</h4>
-          <div class="sc-by">Insurance vs. self-pay, access gaps, and the true cost of care.</div>
-          <a href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">Open the article</a>
-        </div>
+      <div class="ag-grid">
+        <a class="ag-thumb" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">
+          <img src="images/therapy-cost-01.jpg" alt="Article opening: the rising cost of therapy" onerror="this.closest('.ag-thumb').style.display='none'">
+        </a>
+        <a class="ag-thumb" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">
+          <img src="images/therapy-cost-02.jpg" alt="Average therapy costs across the United States map" onerror="this.closest('.ag-thumb').style.display='none'">
+        </a>
+        <a class="ag-thumb" href="https://www.simplepractice.com/blog/average-therapy-session-rate-by-state/" target="_blank">
+          <img src="images/therapy-cost-03.jpg" alt="States with the lowest costs of therapy and author bio" onerror="this.closest('.ag-thumb').style.display='none'">
+        </a>
+      </div>
+    </div>
+   
 
       </div>
     </div>
