@@ -206,10 +206,10 @@
     z-index: 1;
   }
 
- /* BRAND HEADERS — solid colors + embedded logos */
+  /* BRAND HEADERS — solid colors + embedded logos */
   .grad-sleep { background: #050920; }
   .grad-tf { background: #ffffff; border-bottom-color: var(--rule); }
-  .grad-ls { background: #000000; }
+  .grad-ls { background: #ffd200; }
 
   .brand-logo {
     width: 58%;
@@ -222,6 +222,8 @@
   /* Therapy Finder text fallback needs dark type on white */
   .grad-tf .brand-mark { color: var(--sp-ink); border-color: rgba(18,61,49,0.35); }
   .grad-tf .brand-sub { color: rgba(18,61,49,0.72); }
+  /* LIVESTRONG box is yellow — dark subtitle for contrast */
+  .grad-ls .brand-sub { color: rgba(26,21,18,0.7); }
 
   /* SIMPLEPRACTICE — sun yellow + embedded logo */
   .grad-sp { background: var(--sp-yellow); }
@@ -297,7 +299,7 @@
     color: var(--light); text-decoration: none;
   }
   .ag-link:hover { color: var(--coral-deep); }
- .ag-hero {
+  .ag-hero {
     display: block;
     width: 85%;
     margin: 0 auto;
@@ -426,7 +428,7 @@
     main { padding: 56px 22px 80px; }
     footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
     .card-thumb-gradient { height: 120px; }
-    .sp-logo { width: 62%; }  
+    .sp-logo { width: 62%; }
     .brand-logo { width: 64%; }
     .video-grid { grid-template-columns: 1fr; }
     .cta { padding: 40px 26px; }
@@ -532,13 +534,11 @@
 
     <div class="card">
       <div class="card-inner">
-
- <div class="card-thumb-gradient grad-sleep">
+        <div class="card-thumb-gradient grad-sleep">
           <img class="brand-logo" src="images/sleepdot-com-logo.png" alt="Sleep.com" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark" style="display:none;">Sleep.com</div>
           <div class="brand-sub">Data Partnership &bull; SleepScore Labs</div>
         </div>
-        
         <div class="card-content">
           <div class="card-role">Author &amp; Head of Content</div>
           <div class="card-title"><a href="https://www.sleep.com/sleepycities" target="_blank">America's Most Sleep-Deprived Cities</a></div>
@@ -656,7 +656,8 @@
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-tf">
-          <div class="brand-mark">TherapyFinder</div>
+          <img class="brand-logo" src="images/simplepractice-therapy-finder-logo.png" alt="SimplePractice Therapy Finder" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+          <div class="brand-mark" style="display:none;">TherapyFinder</div>
           <div class="brand-sub">Health Equity &bull; Long-form Reporting</div>
         </div>
         <div class="card-content">
@@ -669,13 +670,11 @@
 
     <div class="card">
       <div class="card-inner">
-
- <div class="card-thumb-gradient grad-sleep">
+        <div class="card-thumb-gradient grad-sleep">
           <img class="brand-logo" src="images/sleepdot-com-logo.png" alt="Sleep.com" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark" style="display:none;">Sleep.com</div>
           <div class="brand-sub">Science Translation &bull; SleepScore Labs</div>
         </div>
-        
         <div class="card-content">
           <div class="card-role">Author &amp; Head of Content</div>
           <div class="card-title"><a href="https://www.sleep.com/sleep-health/summer-effect-on-sleep" target="_blank">The Surprising Effect Summer's Long Days Have on Americans' Sleep</a></div>
@@ -691,15 +690,11 @@
 
     <div class="card">
       <div class="card-inner">
-     
-
- <div class="card-thumb-gradient grad-sleep">
+        <div class="card-thumb-gradient grad-sleep">
           <img class="brand-logo" src="images/sleepdot-com-logo.png" alt="Sleep.com" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
           <div class="brand-mark" style="display:none;">Sleep.com</div>
           <div class="brand-sub">Behavior Change &bull; 8-Day Video Course</div>
         </div>
-
-        
         <div class="card-content">
           <div class="card-role">Creator &amp; Executive Producer</div>
           <div class="card-title"><a href="https://www.sleep.com/8-days-to-8-hours-sleep-program" target="_blank">"8 Days to 8 Hours" Behavior Change Video Course</a></div>
@@ -715,7 +710,8 @@
     <div class="card">
       <div class="card-inner">
         <div class="card-thumb-gradient grad-ls">
-          <div class="brand-mark">LIVESTRONG</div>
+          <img class="brand-logo" src="images/livestrong-logo.png" alt="LIVESTRONG" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+          <div class="brand-mark" style="display:none;">LIVESTRONG</div>
           <div class="brand-sub">Short Documentary &bull; First-Ever Video Production</div>
         </div>
         <div class="card-content">
