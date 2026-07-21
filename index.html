@@ -206,10 +206,22 @@
     z-index: 1;
   }
 
-  /* BRAND GRADIENTS */
-  .grad-sleep { background: linear-gradient(135deg, #2b4a7c 0%, #1a2d4d 100%); }
-  .grad-tf { background: linear-gradient(135deg, #7c4a6b 0%, #43263d 100%); }
-  .grad-ls { background: linear-gradient(135deg, #d4772f 0%, #8a3e1f 100%); }
+ /* BRAND HEADERS — solid colors + embedded logos */
+  .grad-sleep { background: #050920; }
+  .grad-tf { background: #ffffff; border-bottom-color: var(--rule); }
+  .grad-ls { background: #000000; }
+
+  .brand-logo {
+    width: 58%;
+    max-width: 240px;
+    height: auto;
+    object-fit: contain;
+    position: relative; z-index: 1;
+    display: block;
+  }
+  /* Therapy Finder text fallback needs dark type on white */
+  .grad-tf .brand-mark { color: var(--sp-ink); border-color: rgba(18,61,49,0.35); }
+  .grad-tf .brand-sub { color: rgba(18,61,49,0.72); 
 
   /* SIMPLEPRACTICE — sun yellow + embedded logo */
   .grad-sp { background: var(--sp-yellow); }
